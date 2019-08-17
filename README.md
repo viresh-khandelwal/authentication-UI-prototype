@@ -1,4 +1,4 @@
-Authentication UI Prototype :
+This application demonstrates a prototype of general web authentication features
 
 #versions of libraries used :
 
