@@ -1,9 +1,11 @@
+@import 'src/_styleVariables.scss';
+
 h1{
     text-align: center;
     color: white;
 }
 
 header{
-    background-color: purple;
+    background-color: $default-color;
     padding: 15px 0;
 }
