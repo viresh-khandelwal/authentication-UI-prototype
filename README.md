@@ -23,3 +23,5 @@ Package                           Version
 rxjs                              6.4.0
 typescript                        3.5.3
 webpack                           4.38.0
+
+2. ngx-bootstrap : 5.1.1
