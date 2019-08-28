@@ -1,0 +1,9 @@
+@import 'src/_styleVariables.scss';
+
+.contnue-button{
+    background-color: $default-color;
+}
+
+.continue-button:hover {
+   background-color: black !important;
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-username',
@@ -15,23 +15,28 @@ export class UsernameComponent implements OnInit {
     this.buildForm();
   }
 
-  buildForm(): void{
+  buildForm(): void {
     this.userNameForm = new FormGroup({
-      userName : new FormControl('',[Validators.required])
+      userName: new FormControl('', [Validators.required, Validators.minLength(5)])
     })
   }
 
-  handleInputBlur(): void{
-    if(this.userNameForm.controls.userName.errors.required){
-      this.userNameError = "please enter your user name";
+  handleInputBlur(): void {
+    let errors = this.userNameForm.controls.userName.errors;
+    if (errors != null) {
+      if (errors.required) {
+        this.userNameError = "Please enter your user name";
+      } else if (errors.minlength) {
+        this.userNameError = "The user name is minimum 5 characters long";
+      }
     }
   }
 
-  handleInputFocus(): void{
+  handleInputFocus(): void {
     this.userNameError = '';
   }
 
-  handleSubmit(): void{
+  handleSubmit(): void {
   }
 
 }
