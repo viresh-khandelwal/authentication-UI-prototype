@@ -6,7 +6,7 @@
             <input id="userName" type="text" formControlName="userName" ngModel
             [ngClass]="{'form-control': true, 'is-invalid': userNameError}" (blur)="handleInputBlur()"  (focus)="handleInputFocus()"/>
             <div class="alert alert-danger" role="alert" *ngIf="userNameError">{{userNameError}}</div>
-            <button type="submit" class="btn btn-primary contnue-button">Continue</button>
+            <button type="submit" class="btn btn-primary continue-button">Continue</button>
         </div>
     </form>
 

@@ -27,7 +27,7 @@ export class UsernameComponent implements OnInit {
       if (errors.required) {
         this.userNameError = "Please enter your user name";
       } else if (errors.minlength) {
-        this.userNameError = "The user name is minimum 5 characters long";
+        this.userNameError = "The user name is minimum 5 characters long. Please recheck your user name";
       }
     }
   }
@@ -37,6 +37,9 @@ export class UsernameComponent implements OnInit {
   }
 
   handleSubmit(): void {
+    if(this.userNameForm.status === "VALID"){
+      alert('submitFunctionCalled');
+    }
   }
 
 }
