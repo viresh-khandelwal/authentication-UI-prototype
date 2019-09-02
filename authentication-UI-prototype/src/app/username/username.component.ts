@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UsernameService } from './username.service';
 
 @Component({
   selector: 'app-username',
@@ -9,7 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class UsernameComponent implements OnInit {
   userNameForm: FormGroup;
   userNameError: string;
-  constructor() { }
+  constructor(private usernameService: UsernameService) { }
 
   ngOnInit() {
     this.buildForm();
@@ -37,6 +38,7 @@ export class UsernameComponent implements OnInit {
   }
 
   handleSubmit(): void {
+    this.usernameService.authenticateUsername('viru').subscribe(() => alert("hello hi dosto"));
     if(this.userNameForm.status === "VALID"){
       alert('submitFunctionCalled');
     }
