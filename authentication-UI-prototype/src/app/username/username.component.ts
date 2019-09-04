@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsernameService } from './username.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-username',
@@ -10,7 +12,10 @@ import { UsernameService } from './username.service';
 export class UsernameComponent implements OnInit {
   userNameForm: FormGroup;
   userNameError: string;
-  constructor(private usernameService: UsernameService) { }
+  constructor(
+    private usernameService: UsernameService,
+    private authenticationService: AuthenticationService,
+    private router: Router) { }
 
   ngOnInit() {
     this.buildForm();
@@ -38,9 +43,18 @@ export class UsernameComponent implements OnInit {
   }
 
   handleSubmit(): void {
-    this.usernameService.authenticateUsername('viru').subscribe(() => alert("hello hi dosto"));
     if(this.userNameForm.status === "VALID"){
-      alert('submitFunctionCalled');
+      this.authenticationService.authenticateUserName(this.userNameForm.value.userName).subscribe(
+        (res:any) => {
+          if(res.userAuthenticated){
+            this.router.navigate(['password']);
+          }else{
+            this.userNameError = "Invalid username"
+          }
+        }
+      );
+    }else{
+      this.handleInputBlur();
     }
   }
 

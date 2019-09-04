@@ -14,7 +14,6 @@ export class AuthenticationService {
   ) { }
   authenticateUserName(username){
     return this.httpClient.post('/api/authenticateUsername', {'username':username});
-   // return this.httpClient.get('http://localhost:3000')
    //this.httpClient.post('http://localhost:8080',username).pipe(tap((response) => true));
   }
 }

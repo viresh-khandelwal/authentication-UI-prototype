@@ -13,7 +13,11 @@ app.listen(3000, () => console.log('Example app listening on port 3000!'))
 // })
 
 app.post('/authenticateUsername', bodyParser.json(), (req, res) => {
-    //console.log(req.body);
-    //res.json(req.body);
-    res.send("user authenticated !!");
+    console.log(req.body);
+    if(req.body.username == 'viresh'){
+        res.send({userAuthenticated: true});
+    }else{
+        res.send({userAuthenticated: false});
+    }
+    
 })
