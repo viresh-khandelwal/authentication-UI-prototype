@@ -3,7 +3,7 @@
     <form [formGroup]="userNameForm" (ngSubmit)="handleSubmit()" autocomplete="off">
         <div class="form-group">
             <label for="userName">Please enter your username :</label>
-            <input id="userName" type="text" formControlName="userName" ngModel
+            <input id="userName" type="text" formControlName="userName"
             [ngClass]="{'form-control': true, 'is-invalid': userNameError}" (blur)="handleInputBlur()"  (focus)="handleInputFocus()"/>
             <div class="alert alert-danger" role="alert" *ngIf="userNameError">{{userNameError}}</div>
             <button type="submit" class="btn btn-primary continue-button">Continue</button>

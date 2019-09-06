@@ -46,10 +46,10 @@ export class UsernameComponent implements OnInit {
     if(this.userNameForm.status === "VALID"){
       this.authenticationService.authenticateUserName(this.userNameForm.value.userName).subscribe(
         (res:any) => {
-          if(res.userAuthenticated){
+          if(res){
             this.router.navigate(['password']);
           }else{
-            this.userNameError = "Invalid username"
+            this.userNameError = "The username you entered , doesn't match our records"
           }
         }
       );
@@ -57,5 +57,9 @@ export class UsernameComponent implements OnInit {
       this.handleInputBlur();
     }
   }
+
+  //       this.router.navigate(['password', { 'username': this.userNameForm.value.userName }]).then((res) => (console.log(res)), (err) => console.log("error"));
+  // to access in route guard :
+  // this.activatedRouteSnapshot.data["username"]
 
 }
