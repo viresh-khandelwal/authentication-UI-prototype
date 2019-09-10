@@ -14,6 +14,6 @@ export class PasswordPageGuard implements  CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ):Observable<boolean>{
-    return this.authenticationService.authenticateUserName('viresh');
+    return this.authenticationService.authenticateUserName();
   }
 }

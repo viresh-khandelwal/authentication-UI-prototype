@@ -44,22 +44,12 @@ export class UsernameComponent implements OnInit {
 
   handleSubmit(): void {
     if(this.userNameForm.status === "VALID"){
-      this.authenticationService.authenticateUserName(this.userNameForm.value.userName).subscribe(
-        (res:any) => {
-          if(res){
-            this.router.navigate(['password']);
-          }else{
-            this.userNameError = "The username you entered , doesn't match our records"
-          }
-        }
-      );
+      this.authenticationService.userNameToBeValidated = this.userNameForm.value.userName;
+      this.router.navigate(['password']).then((res) => {
+        this.userNameError = "The username that you entered does not match our records , please try again."
+      }, (err) => console.log(err));
     }else{
       this.handleInputBlur();
     }
   }
-
-  //       this.router.navigate(['password', { 'username': this.userNameForm.value.userName }]).then((res) => (console.log(res)), (err) => console.log("error"));
-  // to access in route guard :
-  // this.activatedRouteSnapshot.data["username"]
-
 }
