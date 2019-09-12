@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'src/_styleVariables.scss';
 
+@import 'src/_styleVariables.scss';
+
 *{
     margin: 0;
     padding: 0;
@@ -18,4 +20,8 @@
 .alert{
     margin: 10px 0;
     padding: .4rem 1.25rem;
+}
+
+hr{
+    border: 1px solid $default-color;
 }
