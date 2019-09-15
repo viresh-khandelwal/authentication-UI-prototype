@@ -23,7 +23,8 @@ export class UsernameComponent implements OnInit {
 
   buildForm(): void {
     this.userNameForm = new FormGroup({
-      userName: new FormControl('', [Validators.required, Validators.minLength(5)])
+      userName: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      rememberMe: new FormControl(false)
     })
   }
 
