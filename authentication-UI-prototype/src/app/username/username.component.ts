@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class UsernameComponent implements OnInit {
   userNameForm: FormGroup;
   userNameError: string;
+  spinner:boolean = false;
   constructor(
     private usernameService: UsernameService,
     private authenticationService: AuthenticationService,
@@ -45,12 +46,21 @@ export class UsernameComponent implements OnInit {
 
   handleSubmit(): void {
     if(this.userNameForm.status === "VALID"){
+      this.spinner = true;
       this.authenticationService.userNameToBeValidated = this.userNameForm.value.userName;
       this.router.navigate(['password']).then((res) => {
+        this.hideSpinner();  
         this.userNameError = "The username that you entered does not match our records , please try again."
-      }, (err) => console.log(err));
+      }, (err) => { 
+        this.hideSpinner();      
+        console.log(err)
+      });
     }else{
       this.handleInputBlur();
     }
+  }
+
+  hideSpinner(): void{
+    this.spinner = false;
   }
 }

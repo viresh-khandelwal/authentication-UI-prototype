@@ -11,7 +11,10 @@
             <input id="rememberMe" type="checkbox" formControlName="rememberMe" class="form-check-input" />
             <label for="rememberMe" class="form-check-label">Remember me</label>
         </div>
-        <button type="submit" class="btn btn-primary continue-button">Continue</button>
+        <button type="submit" class="btn btn-primary continue-button">
+            <span class="spinner-border" *ngIf = "spinner"></span>
+            <span class="continue-text" *ngIf ="!spinner">Continue</span>
+        </button>
     </form>
     <hr>
     <div>
