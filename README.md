@@ -1,6 +1,6 @@
 This application demonstrates a prototype of general web authentication features
 
-#versions of libraries used :
+#versions of libraries and frameorks used :
 
 1. angular :
 
@@ -24,5 +24,7 @@ rxjs                              6.4.0
 typescript                        3.5.3
 webpack                           4.38.0
 
+2. server : express : ^4.17.1
+3. mongoDB database : 3.2
 2. ngx-bootstrap : 5.1.1
 3. bootstrap : 4.1.1
