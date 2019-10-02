@@ -9,12 +9,22 @@ import { pipe } from 'rxjs'
 })
 export class AuthenticationService {
   userNameToBeValidated:string;
+  userToken:any;
 
   constructor(
     private httpClient: HttpClient
   ) { }
   authenticateUserName(): Observable<boolean>{
-    return this.httpClient.post('/api/authenticateUsername', {'username':this.userNameToBeValidated}).pipe(map((response:any) => response.userAuthenticated));
-   //this.httpClient.post('http://localhost:8080',username).pipe(tap((response) => true));
+    return this.httpClient.post('/api/authenticateUsername', {'username':this.userNameToBeValidated}).pipe(
+      map((response:any) => {
+        if(response.token){
+          this.userToken = response.token;
+          return true;
+        }else{
+          return false;
+        }
+      })
+    );
+    //this.httpClient.post('http://localhost:8080',username).pipe(tap((response) => true));
   }
 }

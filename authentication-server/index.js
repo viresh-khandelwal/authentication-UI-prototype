@@ -27,9 +27,13 @@ app.post('/authenticateUsername', bodyParser.json(), (req, res) => {
         var db = client.db('authenticationDB');
         db.collection('usernames', function (err, collection) {       
             collection.find({ name: req.body.username}).toArray(function(err, items) {
-                if(err) throw err; 
-                console.log(items);                  
-                res.send({userAuthenticated: items.length !== 0});
+                if(err) throw err;                 
+                if(items.length !== 0){
+                    var token = jwt.sign({username: req.body.username}, 'authentication-app-super-shared-secret-1707', {expiresIn: '2h'});
+                    res.send({token})
+                }else{
+                    res.sendStatus(401);
+                }
             });
         });
 
