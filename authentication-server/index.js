@@ -1,6 +1,10 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const app = express()
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+const jwt = require('jsonwebtoken');
+const expressJwt = require('express-jwt');
+
 
 
 var MongoClient = require('mongodb').MongoClient;
