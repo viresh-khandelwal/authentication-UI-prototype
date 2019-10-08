@@ -23,8 +23,17 @@ Package                           Version
 rxjs                              6.4.0
 typescript                        3.5.3
 webpack                           4.38.0
+ 
+ngx-bootstrap : 5.1.1
+bootstrap : 4.1.1
 
-2. server : express : ^4.17.1
-3. mongoDB database : 3.2
-2. ngx-bootstrap : 5.1.1
-3. bootstrap : 4.1.1
+2. node server :
+
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",      (express framework)
+    "express-jwt": "^5.3.1",   (required for implementing JWT based authentication)
+    "jsonwebtoken": "^8.5.1",  (required for implementing JWT based authentication)
+    "mongodb": "^3.3.2"   (it is the mongoDB driver required to connect node with mongoDB database)
+    
+ 3. Database :
+ mongoDB: 3.2.22
