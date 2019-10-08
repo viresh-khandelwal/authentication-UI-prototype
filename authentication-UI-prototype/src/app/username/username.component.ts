@@ -50,10 +50,11 @@ export class UsernameComponent implements OnInit {
       this.authenticationService.userNameToBeValidated = this.userNameForm.value.userName;
       this.router.navigate(['password']).then((res) => {
         this.hideSpinner();  
-        this.userNameError = "The username that you entered does not match our records , please try again."
       }, (err) => { 
         this.hideSpinner();      
-        console.log(err)
+        if(err.status == 401){
+          this.userNameError = "The username that you entered does not match our records , please try again."
+        }
       });
     }else{
       this.handleInputBlur();

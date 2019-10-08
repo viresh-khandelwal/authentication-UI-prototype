@@ -13,7 +13,7 @@ var MongoClient = require('mongodb').MongoClient;
 //     res.send('Welcome to Node API')
 // })
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+app.listen(3000, () => console.log('Authentication server listening on port 3000!'))
 
 // app.get('/getData', (req, res) => {
 //     res.json({'message': 'Hello World'})
