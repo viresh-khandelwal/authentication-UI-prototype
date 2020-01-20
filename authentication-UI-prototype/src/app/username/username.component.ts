@@ -47,7 +47,9 @@ export class UsernameComponent implements OnInit {
   handleSubmit(): void {
     if(this.userNameForm.status === "VALID"){
       this.spinner = true;
-      this.authenticationService.userNameToBeValidated = this.userNameForm.value.userName;
+      let formData = this.userNameForm.value;
+      this.authenticationService.userNameToBeValidated = formData.userName;
+      this.checkIfUserToBeRemembered(formData);
       this.router.navigate(['password']).then((res) => {
         this.hideSpinner();  
       }, (err) => { 
@@ -59,6 +61,12 @@ export class UsernameComponent implements OnInit {
     }else{
       this.handleInputBlur();
     }
+  }
+
+  checkIfUserToBeRemembered(formData){
+     if(formData.rememberMe){
+       localStorage['userName'] = formData.userName;
+     }
   }
 
   hideSpinner(): void{
