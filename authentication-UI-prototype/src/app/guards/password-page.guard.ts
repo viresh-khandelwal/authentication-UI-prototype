@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanActivate } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of} from 'rxjs';
 import { AuthenticationService } from 'src/app/services/authentication.service'
 
 @Injectable({
@@ -14,6 +14,10 @@ export class PasswordPageGuard implements  CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ):Observable<boolean>{
-    return this.authenticationService.authenticateUserName();
+    if(localStorage.getItem('access_token')) {
+      return of(true);  //of() converts true to observable containing true
+    }else{
+      return this.authenticationService.authenticateUserName();
+    } 
   }
 }

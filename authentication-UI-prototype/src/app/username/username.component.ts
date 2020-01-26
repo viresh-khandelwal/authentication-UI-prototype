@@ -48,8 +48,11 @@ export class UsernameComponent implements OnInit {
     if(this.userNameForm.status === "VALID"){
       this.spinner = true;
       let formData = this.userNameForm.value;
-      this.authenticationService.userNameToBeValidated = formData.userName;
-      this.checkIfUserToBeRemembered(formData);
+      this.authenticationService.userData = {
+        'name' : formData.userName,
+        'remember' : formData.rememberMe
+      }
+      //this.checkIfUserToBeRemembered({});
       this.router.navigate(['password']).then((res) => {
         this.hideSpinner();  
       }, (err) => { 
@@ -63,11 +66,11 @@ export class UsernameComponent implements OnInit {
     }
   }
 
-  checkIfUserToBeRemembered(formData){
-     if(formData.rememberMe){
-       localStorage['userName'] = formData.userName;
-     }
-  }
+  // checkIfUserToBeRemembered(formData){
+  //    if(formData.rememberMe){
+  //      localStorage['userName'] = formData.userName;
+  //    }
+  // }
 
   hideSpinner(): void{
     this.spinner = false;

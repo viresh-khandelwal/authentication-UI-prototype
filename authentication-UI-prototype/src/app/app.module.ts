@@ -8,6 +8,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UsernameComponent } from './username/username.component';
 import { PasswordComponent } from './password/password.component';
 import { SignupComponent } from './signup/signup.component';
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   declarations: [
@@ -21,7 +26,14 @@ import { SignupComponent } from './signup/signup.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:4000'],
+        blacklistedRoutes: ['localhost:4000/api/auth']
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

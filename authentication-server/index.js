@@ -25,12 +25,13 @@ app.post('/authenticateUsername', bodyParser.json(), (req, res) => {
     MongoClient.connect("mongodb://localhost:27017", function (err, client) {
         if (err) throw err;
         var db = client.db('authenticationDB');
-        db.collection('usernames', function (err, collection) {       
-            collection.find({ name: req.body.username}).toArray(function(err, items) {
+        db.collection('usernames', function (err, collection) {   
+            let username = req.body.userData.name;
+            collection.find({ name: username}).toArray(function(err, items) {
                 if(err) throw err;                 
                 if(items.length !== 0){
-                    var token = jwt.sign({username: req.body.username}, 'authentication-app-super-shared-secret-1707', {expiresIn: '2h'});
-                    res.send({token})
+                        var token =  req.body.userData.remember ? jwt.sign({username: req.body.username}, 'authentication-app-super-shared-secret-1707', {expiresIn: '2h'}) : '';
+                        res.send({'status':'valid','token' : token});
                 }else{
                     res.sendStatus(401);
                 }

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'authentication-UI-prototype';
+
+  constructor(
+    private router: Router
+  ){}
+
+  ngOnInit(){
+    if(localStorage.getItem('access_token')){
+      this.router.navigate(['password']).then((res) => {}, (err) => {});
+    }
+  }
 }
