@@ -4,7 +4,7 @@
         <div class="form-group">
             <label for="userName">username or email address :</label>
             <input id="userName" type="text" formControlName="userName" [ngClass]="{'form-control': true, 'is-invalid': userNameError}"
-                (blur)="handleInputBlur()" (focus)="handleInputFocus()" />
+                (blur)="handleInputBlur()" (focus)="handleInputFocus()" autofocus/>
             <div class="alert alert-danger" role="alert" *ngIf="userNameError">{{userNameError}}</div>
         </div>
         <div class="form-check">

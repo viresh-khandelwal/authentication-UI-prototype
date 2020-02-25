@@ -1,3 +1,6 @@
-1. spinner can be made as a seperate reusable component
-2. check whether in password guard , routerStateSnapshot can be used to get the data from username
+ideas dropped :
+1. idea dropped -  spinner can be made as a seperate reusable component
+reason - no need to make things complicated and inefficient.
+2. idea dropped - check whether in password guard , routerStateSnapshot can be used to get the data from username
 component , so that from the username component we will not need to set from data in authService.
+reason - reason : we cant get the vairaibles of username component in router state 

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json --ssl --ssl-key ssl/14authentication.local.key  --ssl-cert ssl/14authentication.local.crt",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -21,9 +21,11 @@
     "@angular/router": "~8.2.0",
     "@auth0/angular-jwt": "^3.0.1",
     "bootstrap": "4.1.1",
+    "classlist.js": "^1.1.20150312",
     "ngx-bootstrap": "^5.1.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
+    "web-animations-js": "^2.3.2",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
