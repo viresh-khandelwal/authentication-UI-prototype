@@ -9,6 +9,9 @@ import { UsernameComponent } from './username/username.component';
 import { PasswordComponent } from './password/password.component';
 import { SignupComponent } from './signup/signup.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import localeHi from '@angular/common/locales/hi'
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeHi, 'hi-In');
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
